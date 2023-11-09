@@ -19,4 +19,4 @@ export const GraphQlContextProvider = ({
   );
 };
 
-export const useGraphQlContext = useContext(GraphQlContext);
+export const useGraphQlContext = () => useContext(GraphQlContext);
