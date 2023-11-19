@@ -1,6 +1,3 @@
-# Laravel CRUD API
-
-This repository contains a simple Laravel CRUD (Create, Read, Update, Delete) API for managing a collection of items. It's designed as a starting point for building APIs in Laravel.
 
 ## Table of Contents
 - [Run locally](#runlocally)
