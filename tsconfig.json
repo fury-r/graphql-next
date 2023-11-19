@@ -19,9 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@src/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "amplify/backend/function/quotegenerator/src/index.js", "amplify/backend/function/quotegenerator/src/index.js"],
   "exclude": ["node_modules"]
 }

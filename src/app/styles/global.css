@@ -1,11 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --primary:#222529;
+  --secondary:#1a1d21;
+  --accent:rgb(85, 85, 85);
+  --color:whitesmoke;
 }
 
 @media (prefers-color-scheme: dark) {
