@@ -1,36 +1,78 @@
+# Laravel CRUD API
+
+This repository contains a simple Laravel CRUD (Create, Read, Update, Delete) API for managing a collection of items. It's designed as a starting point for building APIs in Laravel.
+
+## Table of Contents
+- [Run locally](#runlocally)
+    - [Installation](#installation)
+    - [Getting Started](#gettingstarted)
+- [AWS Amplify Setup](#amplifysetup)
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Run locally
 
 ## Getting Started
 
-First, run the development server:
+
+Install all the packages:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm i
+``````
+Run the development server:
+
+```bash
+npm start
+```
+# AWS Amplify Setup
+
+## Install the dependencies
+
+
+amplify-cli
+```bash
+npm install -g @aws-amplify/cli
+``````
+configure cli:
+
+```bash
+amplify configure
+```
+[More info](https://docs.amplify.aws/javascript/tools/cli/start/set-up-cli/)
+
+
+## Add amplify to project
+
+Initialize amplify in your project
+```bash
+amplify init
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Add api
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+amplify add api
+```
+Choose graphQl
 
-## Learn More
+Add function
+```bash
+amplify add function
+```
 
-To learn more about Next.js, take a look at the following resources:
+Push your changes
+```bash
+amplify push
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Replace build file on amplify build settings with
+```bash
+amplify.yml
+```
+### Replacce the function name on line 22 with name which you had given while doing Add function step
+```bash
+    - npm run install:sharp --prefix  ./amplify/backend/function/{your_function}/src
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```

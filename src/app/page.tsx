@@ -1,24 +1,70 @@
 "use client";
 import {
   AppBackground,
+  AppButton,
+  AppContainer,
+  AppInnerContainer,
+  AppSubTitle,
+  AppTitle,
   BackgroundImage1,
   BackgroundImage2,
+  ButtonText,
   FooterContainer,
   FooterLink,
   RedSpan,
-} from "@src/components/components";
+} from "@src/components/StyledElements";
 import Image from "next/image";
 import Clouds1 from "@src/assets/cloud-and-thunder.png";
 import Clouds2 from "@src/assets/cloudy-weather.png";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { useItemService } from "@src/hooks/useItemService";
+import QuoteGeneratorModal from "@src/components/QuoteGenerator";
 export default function Home() {
-  const [numberOfQuotes, setNumberOfQuotes] = useState<Number | null>(0);
+  const { numberOfQuotes, updateQuoteInfo, fetchQuote, loading, setLoading } =
+    useItemService();
+  const [openGeneratorModal, setOpenGeneratorModal] = useState<boolean>(false);
+  const [quoteReceived, setQuoteReceived] = useState<string | null>(null);
+
+  useEffect(() => {
+    updateQuoteInfo();
+  }, [updateQuoteInfo]);
+
+  const handleCloseGeneratorModal = () => setOpenGeneratorModal(false);
+
+  const handleOpenGeneratorModal = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    setOpenGeneratorModal(true);
+    const data = await fetchQuote();
+    if (data) setQuoteReceived(data);
+  };
+
   return (
     <AppBackground>
+      {/* BackGround Images  */}
       <BackgroundImage1 src={Clouds1} height="300" alt="cloudybackground1" />
 
       <BackgroundImage2 src={Clouds2} height="300" alt="cloudybackground1" />
+
+      {/* <AppModal /> */}
+      <QuoteGeneratorModal
+        open={openGeneratorModal}
+        close={handleCloseGeneratorModal}
+        processing={loading}
+        setProcessing={setLoading}
+        dataRecieved={quoteReceived}
+        setDataRecieved={setQuoteReceived}
+      />
+      <AppContainer>
+        <AppInnerContainer>
+          <AppTitle>Download your quote!</AppTitle>
+          <AppSubTitle>See a preview:</AppSubTitle>
+          <AppButton onClick={handleOpenGeneratorModal}>
+            <ButtonText>Gen a Quote</ButtonText>
+          </AppButton>
+        </AppInnerContainer>
+      </AppContainer>
+
+      {/* Footer  */}
       <FooterContainer>
         <>Quotes generated:{numberOfQuotes}</>
         <br />
